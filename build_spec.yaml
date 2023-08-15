@@ -17,9 +17,9 @@ steps:
 outputArtifacts:
   - name: munn-get-image
     type: DOCKER_IMAGE
-    # location tag doesn't effect the tag used to deliver the container image to the Container Registry
+    # this location tag doesn't effect the tag used to deliver the container image to the Container Registry
     location: munn-get:0.0.1
   - name: munn-put-image
     type: DOCKER_IMAGE
-    # location tag doesn't effect the tag used to deliver the container image to the Container Registry
+    # this location tag doesn't effect the tag used to deliver the container image to the Container Registry
     location: munn-put:0.0.1
