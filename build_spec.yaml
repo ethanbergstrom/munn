@@ -15,11 +15,11 @@ steps:
       imageVersion=`echo ${OCI_BUILD_RUN_ID} | rev | cut -c 1-7`
 
 outputArtifacts:
-  - name: munn-get-image
+  - name: get
     type: DOCKER_IMAGE
     # this location tag doesn't effect the tag used to deliver the container image to the Container Registry
-    location: munn-get:0.0.1
-  - name: munn-put-image
+    location: get:0.0.1
+  - name: put
     type: DOCKER_IMAGE
     # this location tag doesn't effect the tag used to deliver the container image to the Container Registry
-    location: munn-put:0.0.1
+    location: put:0.0.1
