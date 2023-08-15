@@ -1,5 +1,5 @@
 schema_version: 20180708
-name: munn-get
+name: get
 version: 0.0.1
 runtime: node
 build_image: fnproject/node:18
