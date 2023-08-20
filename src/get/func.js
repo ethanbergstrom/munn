@@ -11,11 +11,17 @@ const client = new NoSQLClient({
 
 const allowedAttributes = ['temperature', 'lux', 'pressure'];
 
+// Retrieve the last 3 hours
+const minuteSpan = 180;
+// JS does time arithmetic in milliseconds
+const msPerMinute = 60000;
+const timeSpan = minuteSpan * msPerMinute;
+
 fdk.handle(async function (input) {
 	try {
 		var resultSet = []
 		const enviroAttributes = input.attributes.filter(value => allowedAttributes.includes(value));
-		const query = `SELECT collectedAt,${enviroAttributes} FROM ${process.env.TABLE_NAME} WHERE collectedAt > '${new Date(new Date() - 3600000).toISOString()}' ORDER BY collectedAt`
+		const query = `SELECT collectedAt,${enviroAttributes} FROM ${process.env.TABLE_NAME} WHERE collectedAt > '${new Date(new Date() - timeSpan).toISOString()}' ORDER BY collectedAt`
         for await(let result of client.queryIterable(query)) {
 			for (let row of result.rows) {
 				resultSet.push(row)
