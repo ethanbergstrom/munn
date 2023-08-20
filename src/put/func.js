@@ -2,7 +2,7 @@ const fdk = require('@fnproject/fdk');
 const NoSQLClient = require('oracle-nosqldb').NoSQLClient;
 const client = new NoSQLClient({
 	compartment: process.env.COMPARTMENT_OCID,
-    auth: {
+	auth: {
 		iam: {
 			useResourcePrincipal: true
 		}
