@@ -20,8 +20,8 @@ const msPerMinute = 60000;
 fdk.handle(async function (input) {
 	try {
 		// If a specific timespan (in minutes) was requested and within the allowed limit, use it. Otherwise, use the default. 
-		const reqMinutes = input['minutes']
-		const timeSpan = (reqMinutes && reqMinutes < allowedMinutes) ? reqMinutes : defaultMinutes
+		const reqMinutes = input.minutes
+		const timeSpan = ((reqMinutes && reqMinutes < allowedMinutes) ? reqMinutes : defaultMinutes) * msPerMinute
 
 		var resultSet = []
 		const enviroAttributes = input.attributes.filter(value => allowedAttributes.includes(value));
