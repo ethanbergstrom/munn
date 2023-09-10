@@ -30,7 +30,8 @@ fdk.handle(async function (input, ctx) {
 
 		var resultSet = []
 		// Filter either the GET query params or POST body by the allowed attributes
-		const enviroAttributes = (queryParams.attributes ?? input.attributes).filter(value => allowedAttributes.includes(value));
+		// If nothing is provided/allowed through the filter, return all the attributes by default
+		const enviroAttributes = (queryParams.attributes ?? input.attributes).filter(value => allowedAttributes.includes(value)) ?? allowedAttributes
 		const query = `SELECT collectedAt,${enviroAttributes} FROM ${process.env.TABLE_NAME} WHERE collectedAt > '${new Date(new Date() - timeSpan).toISOString()}' ORDER BY collectedAt`
 		for await (let result of client.queryIterable(query)) {
 			for (let row of result.rows) {
