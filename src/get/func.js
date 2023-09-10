@@ -20,10 +20,8 @@ const msPerMinute = 60000
 
 fdk.handle(async function (input, ctx) {
 	try {
-		console.log(`querydata = ${JSON.stringify(ctx.headers["Fn-Http-Request-Url"])}`)
 		// From https://technology.amis.nl/oracle-cloud/reading-query-parameters-in-get-requests-to-project-fn-functions-and-oracle-functions-as-a-service/
 		queryParams = url.parse(ctx.headers["Fn-Http-Request-Url"][0], true).query
-		console.log(queryParams)
 
 		// Use GET query params if the exist, otherwise use the POST body
 		const reqMinutes = queryParams.minutes ?? input.minutes
