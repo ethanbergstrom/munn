@@ -20,6 +20,7 @@ const msPerMinute = 60000
 
 fdk.handle(async function (input, ctx) {
 	try {
+		console.log(`querydata = ${JSON.stringify(ctx.headers["Fn-Http-Request-Url"])}`)
 		// From https://technology.amis.nl/oracle-cloud/reading-query-parameters-in-get-requests-to-project-fn-functions-and-oracle-functions-as-a-service/
 		queryParams = url.parse(ctx.headers["Fn-Http-Request-Url"][0], true).query
 
