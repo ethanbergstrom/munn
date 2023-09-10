@@ -1,5 +1,5 @@
-const fdk = require('@fnproject/fdk');
-const NoSQLClient = require('oracle-nosqldb').NoSQLClient;
+const fdk = require('@fnproject/fdk')
+const NoSQLClient = require('oracle-nosqldb').NoSQLClient
 const client = new NoSQLClient({
 	compartment: process.env.COMPARTMENT_OCID,
 	auth: {
@@ -7,7 +7,7 @@ const client = new NoSQLClient({
 			useResourcePrincipal: true
 		}
 	}
-});
+})
 
 fdk.handle(async function (input) {
 	try {
@@ -22,7 +22,7 @@ fdk.handle(async function (input) {
 			}
 		)
 	} catch (err) {
-		console.log(JSON.stringify(err, undefined, 2));
-		return err;
+		console.log(JSON.stringify(err, undefined, 2))
+		return err
 	}
 })
