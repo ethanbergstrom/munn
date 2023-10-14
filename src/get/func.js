@@ -40,7 +40,6 @@ fdk.handle(async function (input, ctx) {
 		}
 		return resultSet
 	} catch (err) {
-		console.log(JSON.stringify(err, undefined, 2))
-		return err
+		throw Error(JSON.stringify(err))
 	}
 })
